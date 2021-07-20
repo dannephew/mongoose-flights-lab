@@ -4,7 +4,8 @@ export{
     newFlight as new, 
     index, 
     create,
-    show
+    show, 
+    createTicket
 }
 
 function newFlight(req, res) {
@@ -49,5 +50,16 @@ function show(req, res) {
             title: "Flight Detail", 
             flight: flight,
         }) 
+    })
+}
+
+function createTicket(req, res) {
+    console.log("Creating ticket")
+    Flight.findById(req.params.id, function(err, flight) {
+        console.log("Tickets: ", flight.tickets)
+        flight.tickets.push(req.body)
+        flight.save(function(err) {
+            res.redirect(`/flights/${flight._id}`)
+        })
     })
 }
