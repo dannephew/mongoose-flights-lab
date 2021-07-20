@@ -22,6 +22,10 @@ function index(req, res) {
  // Create a flight using mongoose
  function create(req, res) {
      console.log(req.body)
+     //for defaults: 
+     for (let key in req.body) {
+        if (req.body[key] === '' || req.body[key] === null || req.body[key] === []) delete req.body[key]
+      }
     // Create a flight using mongoose
     const flight = new Flight(req.body)
     flight.save(function(err) {
