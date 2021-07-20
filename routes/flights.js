@@ -13,6 +13,8 @@ router.get('/', flightsCtrl.index)
 
 router.post("/", flightsCtrl.create)
 
+router.get("/:id", flightsCtrl.show)
+
 export {
   router
 }

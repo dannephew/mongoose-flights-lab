@@ -4,6 +4,7 @@ export{
     newFlight as new, 
     index, 
     create,
+    show
 }
 
 function newFlight(req, res) {
@@ -42,3 +43,11 @@ function index(req, res) {
     // res.redirect("/flights")  
   }
   
+function show(req, res) {
+    Flight.findById(req.params.id, function (err, flight) {
+        res.render("flights/show", {
+            title: "Flight Detail", 
+            flight: flight,
+        }) 
+    })
+}
