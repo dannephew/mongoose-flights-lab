@@ -10,8 +10,14 @@ const Schema = mongoose.Schema
 //A Mongoose schema defines the structure of the document, default values, validators, etc., whereas a Mongoose model provides an interface to the database for creating, querying, updating, deleting records, etc
 
 const ticketSchema = new Schema({
-    seat: String, 
-    price: Number
+    seat: {
+        type: String, 
+        match: /[A-F][1-9]\d?/
+    },
+    price: {
+        type: Number,
+        min: 0
+    }
   }, {
     timestamps: true
   })
