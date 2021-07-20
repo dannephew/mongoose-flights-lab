@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mongoose Flights</title>
-</head>
-<body>
-    <h1><%= title %> </h1>
-    <table>
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/movies/index.css" />
+<%- include('../partials/nav') %>
+
+<main>
+    <h1><%= title %></h1>
+    <table id="list">
         <!-- thead: used within <table> to group header content -->
             <!-- tr: defines a row of cells -->
             <thead>
@@ -27,10 +23,14 @@
                     <td><%= flight.airport %></td>
                     <td><%= flight.flightNo %></td>
                     <td><%= flight.departs %></td>
+                    <td>
+                        <a href="/flights/<%= flight._id %>">DETAILS</a>
+                    </td>
               </tr>
             <% }) %>
         </tbody>
     </table>
     
-</body>
-</html>
+</main>
+
+<%- include('../partials/footer') %> 
