@@ -14,6 +14,16 @@
     <div>Departure: </div>
     <div><%= flight.departs %></div>
   </section>
+
+    <h2>Tickets</h2>
+    <form 
+        id="add-ticket-form"
+        action="/flights/<%= flight._id %>/reviews"
+        method="POST"
+    >
+        <input name="seat" required pattern="[A-F][1-9]\d?">
+        <button type="submit">Add Ticket</button>
+    </form>
 </main>
   
 <%- include('../partials/footer') %>
