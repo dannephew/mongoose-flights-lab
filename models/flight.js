@@ -9,6 +9,7 @@ const Schema = mongoose.Schema
 
 //A Mongoose schema defines the structure of the document, default values, validators, etc., whereas a Mongoose model provides an interface to the database for creating, querying, updating, deleting records, etc
 
+
 const ticketSchema = new Schema({
     seat: {
         type: String, 
@@ -45,8 +46,14 @@ const flightSchema = new Schema({
             return new Date(Date.now() + oneYear)
         }
     },
-    tickets: [ticketSchema]
+    tickets: [ticketSchema], 
+    destinations: {
+        type: Schema.Types.ObjectId,
+        ref: "Destination"
+        // ref: which model to reference
+    }
 })
 
 //Compile schema into a model and export it
 const Flight = mongoose.model("Flight", flightSchema)
+
