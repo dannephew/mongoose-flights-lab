@@ -20,6 +20,8 @@ router.post("/:id/tickets", flightsCtrl.createTicket)
   //don't forget /:
     //otherwise, will get 404 error 
 
+router.post("/:id/destinations", flightsCtrl.addToFlightDestinations)
+
 export {
   router
 }

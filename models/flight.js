@@ -47,11 +47,11 @@ const flightSchema = new Schema({
         }
     },
     tickets: [ticketSchema], 
-    destinations: {
+    destination: [{
         type: Schema.Types.ObjectId,
         ref: "Destination"
         // ref: which model to reference
-    }
+    }]
 })
 
 //Compile schema into a model and export it

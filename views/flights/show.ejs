@@ -46,11 +46,21 @@
                 <td><%= ticket.price %></td>
               </tr>
             <% }) %>
-          </tbody>
-        </table>
       <% } else { %>
         <h3>No Tickets Added</h3>
       <% } %>
+    </tbody>
+    </table>
+    <div>Destinations:</div>
+    <ul>
+                <%- flight.destination.map(d=>`<li>${d.airport}</li>`).join('')%>
+              </ul>
+            <form action="/flights/<%=flight._id%>/destinations" method="POST">
+                <select name="destinationId">
+                    <%- destinations.map(d =>`<option value="${d._id}">${d.airport}</option>`) %> 
+                </select>
+                <button type="submit">Add to destination</button>
+            </form>
 </main>
   
 <%- include('../partials/footer') %>
