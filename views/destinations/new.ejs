@@ -4,11 +4,14 @@
 
 <main>
 	<h1><%= title %></h1>
-  <p>Please first ensure that the destination is not in the dropdown
+  <p>Please first ensure that the Destination is not in the dropdown
       <select>
-          <% destinations.forEach(destination => { %>
+          <% destinations.forEach(function(destination) { %>
             <option><% destination.airport %></option>
+            <%   console.log("views destinations new", destination.airport)
+            %> 
           <% }) %>
+
       </select>
   </p>
   <form id="add-performer-form" action="/destinations" method="POST">
@@ -18,5 +21,4 @@
     <button type="submit">Add Destination</button>
 
 </form>
-
 <% include('../partials/footer') %> 
