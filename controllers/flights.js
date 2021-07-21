@@ -7,7 +7,8 @@ export{
     create,
     show, 
     createTicket, 
-    addToFlightDestinations
+    addToFlightDestinations, 
+    deleteFlight as delete,
 }
 
 function newFlight(req, res) {
@@ -79,4 +80,10 @@ function addToFlightDestinations(req, res) {
           res.redirect(`/flights/${flight._id}`)
         })
       })
+}
+
+function deleteFlight(req, res) {
+    Flight.findByIdAndDelete(req.params.id, function(err, flight) {
+        res.redirect("/flights")
+    })
 }

@@ -7,7 +7,7 @@
   <p>Please first ensure that the Destination is not in the dropdown
       <select>
           <% destinations.forEach(function(destination) { %>
-            <option> <% destination.airport %> </option>
+            <option> <%= destination.airport %> </option>
             <%   console.log("views destinations new", destination.airport)
             %> 
           <% }) %>
