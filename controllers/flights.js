@@ -9,6 +9,8 @@ export{
     createTicket, 
     addToFlightDestinations, 
     deleteFlight as delete,
+    edit,
+    update,
 }
 
 function newFlight(req, res) {
@@ -85,5 +87,24 @@ function addToFlightDestinations(req, res) {
 function deleteFlight(req, res) {
     Flight.findByIdAndDelete(req.params.id, function(err, flight) {
         res.redirect("/flights")
+    })
+}
+
+function edit(req, res) {
+    Flight.findById(req.params.id, function(err, flight) {
+        res.render("flights/edit", {
+            flight,
+            err,
+            title: "Edit Flight"
+        })
+    })
+}
+
+function update(req, res) {
+    for (let key in req.body) {
+        if (req.body[key] === "") delete req.body[key]
+    }
+    Flight.findByIdAndUpdate(req.params.id, req.body, {new:true}, function(err, flight) {
+        res.redirect(`/flights/${flight._id}`)
     })
 }
